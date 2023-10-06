@@ -3,7 +3,9 @@
 Repository for DAG's used in [Garudata Data Platform Project][url-garudata]
 
 
-TODO: Auto deploy to [Airflow][url-garudata-airflow]
+TODO:
+[-] Auto deploy to [Airflow][url-garudata-airflow]
+[ ] Test DAG's before deployment
 
 
 <!-- Links -->
