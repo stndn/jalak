@@ -40,10 +40,6 @@ def GetWeatherData():
       command='cd /home/garuda/app/merpati/weather && make save-weather'
     )
 
-  get_weather >> log_date
-
 
 _ = GetWeatherData()
 
-if __name__ == "__main__":
-    dag.test()
