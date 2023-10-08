@@ -46,6 +46,7 @@ def GetWeatherData():
       command='cd /home/garuda/app/merpati/weather && make save-weather'
     )
 
+  get_weather >> parse_weather >> save_weather
+
 
 _ = GetWeatherData()
-
