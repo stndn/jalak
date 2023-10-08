@@ -12,7 +12,7 @@ default_args = {
 
 @dag(
   dag_id='get-and-save-weather-data',
-  description='Download weather data via API calls and save to S3 storage',
+  description='Download weather data via API calls, parse it, and save to S3 storage',
   default_args=default_args,
   schedule='@hourly',
   catchup=False,
@@ -32,6 +32,12 @@ def GetWeatherData():
       task_id='get-weather',
       ssh_conn_id='rumah_merpati',
       command='cd /home/garuda/app/merpati/weather && make get-weather'
+    )
+
+  parse_weather = SSHOperator(
+      task_id='parse-weather',
+      ssh_conn_id='rumah_merpati',
+      command='cd /home/garuda/app/merpati/weather && make parse-weather'
     )
 
   save_weather = SSHOperator(
