@@ -31,19 +31,19 @@ def GetWeatherData():
   get_weather = SSHOperator(
       task_id='get-weather',
       ssh_conn_id='rumah_merpati',
-      command='cd /home/garuda/app/merpati/weather && make get-weather'
+      command='cd /home/garuda/app/merpati/weather-etl && make get-weather'
     )
 
   parse_weather = SSHOperator(
       task_id='parse-weather',
       ssh_conn_id='rumah_merpati',
-      command='cd /home/garuda/app/merpati/weather && make parse-weather'
+      command='cd /home/garuda/app/merpati/weather-etl && make parse-weather'
     )
 
   save_weather = SSHOperator(
       task_id='save-weather',
       ssh_conn_id='rumah_merpati',
-      command='cd /home/garuda/app/merpati/weather && make save-weather'
+      command='cd /home/garuda/app/merpati/weather-etl && make save-weather'
     )
 
   get_weather >> parse_weather >> save_weather
